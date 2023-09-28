@@ -26,6 +26,22 @@ public class Main {
         int targetUnit = scanner.nextInt();
         System.out.println("Converted volume: " + Converter.convertVolume(volume, sourceUnit, targetUnit));
 
+        //Handle Length
+        System.out.println("Length Conversion:");
+        System.out.println("1. Meters");
+        System.out.println("2. Centimeters");
+        System.out.println("3. Feet");
+        System.out.println("4. Inches");
+        System.out.print("Enter the source length unit (1/2/3/4): ");
+        sourceUnit = scanner.nextInt();
+
+        System.out.print("Enter the length value: ");
+        double length = scanner.nextDouble();
+
+        System.out.print("Enter the target length unit (1/2/3/4): ");
+        targetUnit = scanner.nextInt();
+        System.out.println("Converted volume: " + Converter.convertLength(length, sourceUnit, targetUnit));
+
         scanner.close();
 
     }
