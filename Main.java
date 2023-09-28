@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 public class Main {
 
@@ -12,7 +13,7 @@ public class Main {
         int decimalNum = scanner.nextInt();
         System.out.println("the Binary value is " + Converter.convertDecimal2Binary(decimalNum));
 
-        //Handle volume
+        //Handle volume Conversion
         System.out.println("Volume Conversion:");
         System.out.println("1. Cubic Meters");
         System.out.println("2. Liters");
@@ -26,7 +27,7 @@ public class Main {
         int targetUnit = scanner.nextInt();
         System.out.println("Converted volume: " + Converter.convertVolume(volume, sourceUnit, targetUnit));
 
-        //Handle Length
+        //Handle Length Conversion
         System.out.println("Length Conversion:");
         System.out.println("1. Meters");
         System.out.println("2. Centimeters");
@@ -34,13 +35,29 @@ public class Main {
         System.out.println("4. Inches");
         System.out.print("Enter the source length unit (1/2/3/4): ");
         sourceUnit = scanner.nextInt();
-
         System.out.print("Enter the length value: ");
         double length = scanner.nextDouble();
-
         System.out.print("Enter the target length unit (1/2/3/4): ");
         targetUnit = scanner.nextInt();
         System.out.println("Converted volume: " + Converter.convertLength(length, sourceUnit, targetUnit));
+
+        //Handle Currency Conversion
+        System.out.println("Currency Conversion:");
+        System.out.print("Enter the amount to convert: ");
+        double amount = scanner.nextDouble();
+        System.out.print("Enter the source currency code (e.g., USD): ");
+        String sourceCurrency = scanner.next().toUpperCase();
+        System.out.print("Enter the target currency code (e.g., EUR): ");
+        String targetCurrency = scanner.next().toUpperCase();
+        double exchangeRate = Converter.getExchangeRate(sourceCurrency, targetCurrency);
+        if (exchangeRate == -1.0) {
+            System.out.println("Invalid currency codes.");
+        } else {
+            double convertedAmount = Converter.convertCurrency(amount, exchangeRate);
+            DecimalFormat df = new DecimalFormat("#.##");
+            System.out.println("Converted amount: " + df.format(convertedAmount) + " " + targetCurrency);
+        }
+
 
         scanner.close();
 

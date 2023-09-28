@@ -50,4 +50,20 @@ public class Converter {
         return 0.0; // Default if units are not recognized
     }
 
+    public static double getExchangeRate(String sourceCurrency, String targetCurrency) {
+        // In a real application, fetch the exchange rate from an API or database
+        // Here, we use a hardcoded exchange rate (for demonstration purposes)
+        // You should replace this with a reliable source of exchange rates
+        if (sourceCurrency.equals("USD") && targetCurrency.equals("EUR")) {
+            return 0.85; // 1 USD = 0.85 EUR
+        } else if (sourceCurrency.equals("USD") && targetCurrency.equals("GBP")) {
+            return 0.73; // 1 USD = 0.73 GBP
+        } else {
+            return -1.0; // Invalid currency codes
+        }
+    }
+    public static double convertCurrency(double amount, double exchangeRate) {
+        return amount * exchangeRate;
+    }
+
 }
